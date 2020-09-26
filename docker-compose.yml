@@ -10,29 +10,39 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
       - MONGO_HOSTNAME=mongo
-      - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB
+      - MONGO_PORT=${MONGO_PORT}
+      - MONGO_DB=${MONGO_DB}
     ports:
       - "80:8080"
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    links:
+      - ./src:/home/node/app/src
+    depends_on:
       - mongo
-    command: ./wait-for.sh mongo:27017 -- /home/node/app/node_modules/.bin/nodemon app.js
+    command: ./wait-for.sh mongo:27017 -- /bin/sh -c "cd /home/node/app && npm run start"
   mongo:
     image: mongo
     container_name: mongo
     restart: unless-stopped
     env_file: .env
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
-      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
-    volumes:  
-      - dbdata:/data/db   
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    # volumes:  
+    #   - dbdata:/data/db  
+  mongo-express:
+    image: mongo-express
+    restart: always
+    env_file: .env
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_PASSWORD}
+    depends_on:
+      - mongo
 volumes:
   dbdata:
   node_modules:  
