@@ -1,7 +1,7 @@
 # Модель данных NoSql
 ## 1. Графическое представление
 Графическое представление модели показано на рисунке 1
-[![Alt text](//placehold.it/150x100)](https://github.com/moevm/nosql2h20-etu-mongo/blob/master/ui_model/mongo_classes.png)
+![mountains](https://github.com/moevm/nosql2h20-etu-mongo/blob/master/ui_model/mongo_classes.png "Рисунок 1 – графическое представление модели данных в mongodb.")
 Рисунок 1 – графическое представление модели данных в mongodb.
 ## 2. Описание коллекций, типов данных и сущностей
 ### Модель состоит из 4 сущностей
