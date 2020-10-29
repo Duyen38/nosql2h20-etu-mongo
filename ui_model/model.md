@@ -1,7 +1,7 @@
 # Модель данных NoSql
 ## 1. Графическое представление
 Графическое представление модели показано на рисунке 1
-![mountains](https://github.com/moevm/nosql2h20-etu-mongo/blob/master/ui_model/mongo_classes.png "Рисунок 1 – графическое представление модели данных в mongodb.")
+![mongo](https://github.com/moevm/nosql2h20-etu-mongo/blob/master/ui_model/mongo_classes.png)  
 Рисунок 1 – графическое представление модели данных в mongodb.
 ## 2. Описание коллекций, типов данных и сущностей
 ### Модель состоит из 4 сущностей
@@ -36,9 +36,12 @@
 db.disciplines.insertOne({"name": "Разработка программного обеспечения информационных систем"}) – 1 запрос для добавления данных в таблицу Discipline, 3 для Employee, так как мы обращаемся к таблицам Department и Discipline. От количества данных не зависит
 //Поиск значений
 db.employees.find({name: "Кирилл Кринкин"}, {position: “Доцент”}) 1 запрос для коллекции
+## 5. Пример модели данных в mongodb
+![example](https://github.com/moevm/nosql2h20-etu-mongo/blob/master/ui_model/example_mongo.png)  
 # Модель данных Sql
 ## 1.	Графическое представление
 Графическое представление модели данных MySql показана на рис. 2
+![sql](https://github.com/moevm/nosql2h20-etu-mongo/blob/master/ui_model/sql_classes.png)  
 Рисунок 2 – графическое представление модели данных в mySql.
 ## 2.	Описание коллекций, типов данных и сущностей
 Было создано 4 таблицы аналогично mongodb. Таблицы Faculty, Department, Employee и Discipline.
